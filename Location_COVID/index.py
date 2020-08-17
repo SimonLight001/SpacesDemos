@@ -2,7 +2,6 @@ import jwt
 import requests
 import json
 
-
 # Gets public key from spaces and places in correct format
 pubKey = requests.get(
     'https://partners.dnaspaces.io/client/v1/partner/partnerPublicKey/')
