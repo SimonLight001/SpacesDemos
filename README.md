@@ -4,7 +4,7 @@ This is a repo used to house a few demos that can be used with the DNA Spaces Pa
 
 ## Dependencies
 
-Python (as we;; as pip of course)
+Python (as well as pip of course)
 
 Python packages:
 
