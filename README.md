@@ -10,7 +10,6 @@ Python packages:
 
 These are all shown in the import list for each use case (I usually do this at the top of each file)
 
-- pyjwt
 - requests
-- json
+- pyjwt
 - cryptography (a dependency of pyjwt)
