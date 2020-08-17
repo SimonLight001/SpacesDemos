@@ -1,6 +1,17 @@
 import jwt
 import requests
 import json
+import socket
+import time
+from multiprocessing import Process
+
+
+# work around to get IP address on hosts with non resolvable hostnames
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+IP_ADRRESS = s.getsockname()[0]
+s.close()
+url = 'http://' + str(IP_ADRRESS) + '/'
 
 # Gets public key from spaces and places in correct format
 pubKey = requests.get(
@@ -41,9 +52,8 @@ s = requests.Session()
 s.headers = {'X-API-Key': apiKey}
 r = s.get(
     'https://partners.dnaspaces.io/api/partners/v1/firehose/events', stream=True)
-for line in r.iter_lines():
 
-    # filter out keep-alive new lines
+for line in r.iter_lines():
     if line:
         decoded_line = line.decode('utf-8')
         event = json.loads(decoded_line)
@@ -52,10 +62,7 @@ for line in r.iter_lines():
             location = event['userPresence']['location']['name']
             activeUsers = event['userPresence']['activeUsersCount']['totalUsers']
             if location == "Location - 6861a1f0":
-                if activeUsers < 630:
-                    status = 'Safe to Enter'
-                else:
-                    status = 'Do Not Enter'
-                print(location + ' - ' + str(activeUsers) + ' - ' + status)
-        # else:
-            # print(eventType)
+                payload = {'location': location, 'users': str(activeUsers)}
+                r = requests.post('http://192.168.128.146/', json=payload)
+                print(r.text)
+                # would love to run time.sleep here to slow things down, but this kills the stream
