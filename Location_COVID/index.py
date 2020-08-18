@@ -57,12 +57,13 @@ for line in r.iter_lines():
     if line:
         decoded_line = line.decode('utf-8')
         event = json.loads(decoded_line)
+        print(str(event))
         eventType = event['eventType']
         if eventType == "USER_PRESENCE":
             location = event['userPresence']['location']['name']
             activeUsers = event['userPresence']['activeUsersCount']['totalUsers']
             if location == "Location - 6861a1f0":
                 payload = {'location': location, 'users': str(activeUsers)}
-                r = requests.post('http://192.168.128.146/', json=payload)
+                r = requests.post(url, json=payload)
                 print(r.text)
                 # would love to run time.sleep here to slow things down, but this kills the stream
