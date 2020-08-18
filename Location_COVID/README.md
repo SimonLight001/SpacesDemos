@@ -43,7 +43,7 @@ Once this is done, the demo will validate the app (meaning it will now show as A
 
 The demo will then begin to send data around a location, showing how many users are in that spaces as well as if the space is safe to enter (current limit is hard set at 630, but looking to improve this).
 
-To view the dashboard, navigate to your private IP (e.g. http://192.168.1.129/)
+To view the dashboard, navigate to your private IP (This can be found in wifi settings, or option click the wifi icon on a mac)
 
 Here you can find a link to a video of me starting fresh and installing. (https://youtu.be/2YWrqjDHbFY)
 
