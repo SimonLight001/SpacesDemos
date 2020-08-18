@@ -1,21 +1,25 @@
 import json
 from flask import Flask, request
 
+# Creates and names a new Flask app / web server
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
+# default routing (whenever someone navigates to / run main page); accepts both GET and POST methods
 def main_page():
     global people
     maxSafe = 580
     if request.method == 'GET':
+        # Writes the value of people to terminal
         app.logger.info(people)
         percentage = round(100 * (int(people) / int(maxSafe)))
-        color = 'rgb(235, 97, 52)'
+        color = 'rgb(235, 97, 52)'  # Red Color
         status = 'Not Safe'
         if int(people) < maxSafe:
+            color = 'rgb(85,183,75)'  # Green Color
             status = 'Safe'
-            color = 'rgb(85,183,75)'
+        # returns this entire block of HTML - should change to a template but stretched for time
         return '''
         <html>
          <meta http-equiv="refresh" content="5" />
@@ -36,9 +40,11 @@ def main_page():
                 </div>
             </body>
         </html>'''
+    # if its a post request, strip the data of the number of people and update the people variable with it
     elif request.method == 'POST':
         data = request.data
         people = Update(data)
+        # Then returns that the update was successful and displays number of people updated with
         return 'Successful Update with: ' + str(people)
 
 
