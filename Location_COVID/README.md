@@ -29,9 +29,9 @@ This may require admin permissions - `sudo pip3 install requests pyjwt cryptogra
 
 Then navigate to the correct folder - `cd Location_COVID`
 
-Firstly start the web server with the command `python3 web_server.py`
+Firstly start the web server with the command - `python3 web_server.py`
 
-In another terminal or tab, run the application with `python 3 index.py`
+In another terminal or tab, run the application with - `python 3 index.py`
 
 You will be asked to enter a token. This is done by adding a partner app to a spaces dashboard (can be added to the sandbox dashboard found on the partner site).
 
@@ -45,6 +45,6 @@ The demo will then begin to send data around a location, showing how many users 
 
 To view the dashboard, navigate to your private IP (e.g. http://192.168.1.129/)
 
-Here you can find a link to a video of me starting fresh and installing.
+Here you can find a link to a video of me starting fresh and installing. (https://youtu.be/2YWrqjDHbFY)
 
 This is done on a mac so should be similar experience for Linux, Windows of course may be slightly different.
