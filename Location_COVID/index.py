@@ -57,6 +57,7 @@ for line in r.iter_lines():
     if line:
         decoded_line = line.decode('utf-8')
         event = json.loads(decoded_line)
+        print(str(event))
         eventType = event['eventType']
         if eventType == "USER_PRESENCE":
             location = event['userPresence']['location']['name']
